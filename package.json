@@ -1,0 +1,54 @@
+{
+  "name": "platno-source-tree",
+  "version": "1.0.0",
+  "description": "Build a Source Tree object.",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "./node_modules/.bin/rimraf ./dist && ./node_modules/.bin/babel ./src --out-dir ./dist --ignore \"src/**/*.test.js\" --env-name prod",
+    "lint": "./node_modules/.bin/eslint \"src/**/*.js\"",
+    "test": "./node_modules/.bin/jest",
+    "example": "node -r esm ./example/script.js --i ./example/src"
+  },
+  "author": "Petar Vudragovic <github@platno.rs>",
+  "license": "MIT",
+  "dependencies": {
+    "es-module-lexer": "1.2.1",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.21.0",
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "25.3.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jest": "23.8.2",
+    "eslint-plugin-lodash": "7.1.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "esm": "^3.2.25",
+    "husky": "4.3.8",
+    "jest": "29.5.0",
+    "rimraf": "3.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": [
+        "npm run lint && npm run test"
+      ]
+    }
+  },
+  "keywords": [
+    "parse",
+    "source",
+    "build",
+    "tree"
+  ]
+}
